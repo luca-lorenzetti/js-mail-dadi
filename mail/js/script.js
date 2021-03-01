@@ -1,47 +1,24 @@
-alert("Benvenuti alla stazione 27");
+// LISTA DI UTENTI AUTORIZZATI
+var listEmails = ["paolo.rossi@gmail.com","francesca.bianchi@libero.it","luisa1245@gmail.com","claudio1213@gmail.com","lucia3421@libero.it","maria.graziani123@fastweb.com",
+                    "marco.rossi@libero.it","claudia.rev@rev.org","lucia.job@coop.com","luca.ciao@gmail.com","luigi.galli123@yahoo.com","cinzia123@gmail.com"];
 
-var km = prompt("Inserisci i km che vuoi percorrere");
 
-// Controllo se è stato inserito un valore valido
-if (isNaN(km)) {
-    km = prompt("Non hai inserito un valore valido, prego inserire un valore valido");
+var email = prompt("Inserire l'email per accedere");
 
-    // Faccio un ultimo controllo 
-    if (isNaN(km)) {
-        alert("Non è stato inserito un valore valido, ricarica la pagina");
+var exist = false;
+
+// CONTROLLO TUTTI GLI ELEMENTI DELLA LISTA
+for (var i = 0; i < listEmails.length; i++) {
+
+    if( email == listEmails[i]){
+        exist = true;
     }
-} 
-// Controllo che non abbia inserito un numero minore o uguale a zero
-else if (parseInt(km) <= 0) {
-    alert("Ah vuoi percorrere " + km + " ? Allora  è inutile proseguire nella progedura");
-} 
+}                    
 
-// Chiedo a questo punto l'età
-else {
-    var eta = prompt("Fornire l'età ");
-
-    // Faccio gli stessi controlli fatti in precedenza
-    if (isNaN(eta)) {
-        km = prompt("Non hai inserito un valore valido, prego inserire un valore valido");
-
-        if (isNaN(eta)) {
-            alert("Non è stato inserito un valore valido, ricarica la pagina");
-        }
-    } 
-    
-    // Faccio il calcolo del biglietto con i relativi sconti
-    else {
-        var prezzo = 0.21 * parseInt(km);
-
-        if (parseInt(eta) < 18) {
-            prezzo -= prezzo - (prezzo * 0.2);
-        } 
-        
-        else if (parseInt(eta) >= 65) {
-            prezzo = prezzo - (prezzo * 0.4);
-        }
-
-        alert("Il prezzo per una percorrenza di " + km + " chilometri con una età di " + eta + " anni" + " è di: " + prezzo + " €");
-    }
-
+// CONTROLLO SE E' STATA TROVATA UNA MAIL
+if( exist ){
+    alert("Perfetto login effettuato con successo");
+}
+else{
+    alert("Login fallito, email non presente, controlla i dati e ricarica la pagina");
 }
